@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bg-grad" x1="256" y1="20" x2="256" y2="492" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="50%" stop-color="#043828" />
+      <stop offset="100%" stop-color="#022319" />
+    </linearGradient>
+    <radialGradient id="bg-glow" cx="256" cy="200" r="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#047857" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="earth-ocean" x1="160" y1="110" x2="350" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="45%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+    <linearGradient id="earth-land" x1="200" y1="120" x2="320" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#86efac" />
+      <stop offset="40%" stop-color="#22c55e" />
+      <stop offset="100%" stop-color="#15803d" />
+    </linearGradient>
+    <linearGradient id="sun-ray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="100%" stop-color="#a3e635" />
+    </linearGradient>
+    <linearGradient id="center-person" x1="256" y1="180" x2="256" y2="380" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#bef264" />
+      <stop offset="50%" stop-color="#65a30d" />
+      <stop offset="100%" stop-color="#365314" />
+    </linearGradient>
+    <linearGradient id="left-person" x1="210" y1="190" x2="210" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="40%" stop-color="#047857" />
+      <stop offset="100%" stop-color="#064e3b" />
+    </linearGradient>
+    <linearGradient id="right-person" x1="300" y1="210" x2="360" y2="370" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fde047" />
+      <stop offset="25%" stop-color="#fb923c" />
+      <stop offset="70%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#c2410c" />
+    </linearGradient>
+    <linearGradient id="leaf-left" x1="170" y1="230" x2="260" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#86efac" />
+      <stop offset="35%" stop-color="#22c55e" />
+      <stop offset="80%" stop-color="#15803d" />
+      <stop offset="100%" stop-color="#14532d" />
+    </linearGradient>
+    <linearGradient id="leaf-right" x1="250" y1="280" x2="350" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#bbf7d0" />
+      <stop offset="40%" stop-color="#4ade80" />
+      <stop offset="85%" stop-color="#16a34a" />
+      <stop offset="100%" stop-color="#166534" />
+    </linearGradient>
+    <linearGradient id="leaf-spine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <clipPath id="earth-clip">
+      <circle cx="256" cy="205" r="102" />
+    </clipPath>
+  </defs>
+
+  <rect x="24" y="24" width="464" height="464" rx="116" fill="url(#bg-grad)" stroke="#10b981" stroke-width="4" stroke-opacity="0.3" />
+  <rect x="24" y="24" width="464" height="464" rx="116" fill="url(#bg-glow)" />
+
+  <g stroke="url(#sun-ray)" stroke-width="12" stroke-linecap="round" opacity="0.95">
+    <line x1="140" y1="165" x2="116" y2="152" />
+    <line x1="168" y1="120" x2="148" y2="98" />
+    <line x1="208" y1="88" x2="194" y2="62" />
+    <line x1="256" y1="78" x2="256" y2="50" />
+    <line x1="304" y1="88" x2="318" y2="62" />
+    <line x1="344" y1="120" x2="364" y2="98" />
+    <line x1="372" y1="165" x2="396" y2="152" />
+  </g>
+
+  <circle cx="256" cy="205" r="102" fill="url(#earth-ocean)" />
+
+  <g clip-path="url(#earth-clip)">
+    <path d="M 215 130 C 230 135 240 150 248 165 C 255 178 250 190 238 198 C 225 206 218 220 226 235 C 235 250 250 260 260 270 C 248 275 235 270 225 255 C 215 240 205 230 200 210 C 195 190 200 170 195 155 C 190 140 200 128 215 130 Z" fill="url(#earth-land)" />
+    <path d="M 275 125 C 295 120 315 130 328 145 C 340 160 348 180 340 195 C 330 210 320 215 315 230 C 310 245 320 260 328 275 C 315 270 305 255 300 240 C 295 225 290 210 282 200 C 275 190 270 170 275 150 Z" fill="url(#earth-land)" />
+    <path d="M 240 115 C 248 112 255 116 258 122 C 255 128 248 126 242 122 Z" fill="url(#earth-land)" />
+    <path d="M 270 175 C 276 172 284 176 282 182 C 276 186 270 182 270 175 Z" fill="url(#earth-land)" />
+  </g>
+
+  <circle cx="256" cy="205" r="102" fill="none" stroke="#67e8f9" stroke-width="4" stroke-opacity="0.4" />
+
+  <g>
+    <circle cx="218" cy="216" r="21" fill="url(#left-person)" stroke="#064e3b" stroke-width="2" />
+    <circle cx="213" cy="211" r="7" fill="#ffffff" fill-opacity="0.3" />
+    <path d="M 218 240 C 210 255 195 275 180 295 C 172 305 168 318 174 330 C 182 344 198 350 212 342 C 228 332 238 310 242 290 C 245 272 242 254 235 240 Z" fill="url(#left-person)" />
+  </g>
+
+  <g>
+    <circle cx="302" cy="236" r="22" fill="url(#right-person)" stroke="#9a3412" stroke-width="2" />
+    <circle cx="297" cy="230" r="7" fill="#ffffff" fill-opacity="0.4" />
+    <path d="M 292 258 C 305 270 322 280 340 286 C 356 292 368 288 372 275 C 375 264 366 250 354 242 C 342 234 328 238 318 245 C 304 256 295 272 288 290 C 280 310 282 335 288 355 C 294 340 300 320 305 300 Z" fill="url(#right-person)" />
+    <path d="M 285 260 C 298 275 308 295 312 320 C 314 335 308 350 298 358 C 290 352 285 340 282 325 C 278 305 280 280 285 260 Z" fill="url(#right-person)" opacity="0.9" />
+  </g>
+
+  <g>
+    <circle cx="256" cy="202" r="24" fill="url(#center-person)" stroke="#3f6212" stroke-width="2.5" />
+    <circle cx="250" cy="195" r="8" fill="#ffffff" fill-opacity="0.4" />
+    <path d="M 256 228 
+             C 248 238 236 244 225 242 C 215 240 210 230 216 220 C 224 208 238 205 245 218
+             C 250 228 252 245 252 265
+             C 252 300 248 340 244 375
+             C 252 378 260 378 268 375
+             C 264 340 260 300 260 265
+             C 260 245 262 228 267 218
+             C 274 205 288 208 296 220 C 302 230 297 240 287 242 C 276 244 264 238 256 228 Z" fill="url(#center-person)" />
+  </g>
+
+  <g>
+    <path d="M 248 450 
+             C 230 435 190 385 170 330 
+             C 155 285 160 245 178 225 
+             C 188 238 215 285 235 340 
+             C 245 368 252 410 248 450 Z" 
+          fill="url(#leaf-left)" 
+          stroke="#064e3b" 
+          stroke-width="3" />
+    <path d="M 248 440 C 236 400 220 350 195 280 C 188 260 182 240 180 232" 
+          stroke="url(#leaf-spine)" 
+          stroke-width="4" 
+          stroke-linecap="round" />
+  </g>
+
+  <g>
+    <path d="M 248 450 
+             C 262 430 300 380 325 330 
+             C 345 290 348 255 335 240 
+             C 328 255 305 300 280 350 
+             C 262 385 252 422 248 450 Z" 
+          fill="url(#leaf-right)" 
+          stroke="#064e3b" 
+          stroke-width="3" />
+    <path d="M 248 440 C 265 395 290 340 315 285 C 324 265 330 248 333 244" 
+          stroke="url(#leaf-spine)" 
+          stroke-width="4" 
+          stroke-linecap="round" />
+  </g>
+
+  <ellipse cx="248" cy="445" rx="14" ry="8" fill="#a7f3d0" fill-opacity="0.5" />
+</svg>

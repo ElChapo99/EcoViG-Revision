@@ -1,0 +1,17 @@
+{
+  "name": "EcoViG",
+  "short_name": "EcoViG",
+  "description": "Plataforma de vigilancia, monitoreo y gestión ecológica.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#05070a",
+  "theme_color": "#06b6d4",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
