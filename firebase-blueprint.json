@@ -1,0 +1,180 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account information including roles",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 256 },
+        "name": { "type": "string", "maxLength": 128 },
+        "role": { "type": "string", "enum": ["admin", "teacher", "student", "evaluator"] },
+        "schoolId": { "type": "string", "maxLength": 128 },
+        "teacherId": { "type": "string", "maxLength": 128 },
+        "linkCode": { "type": "string", "maxLength": 6 },
+        "xp": { "type": "number" },
+        "surveyPoints": { "type": "number" },
+        "mainMissionPoints": { "type": "number" },
+        "complementaryPoints": { "type": "number" },
+        "badges": { "type": "array" },
+        "level": { "type": "number" },
+        "streak": { "type": "number" },
+        "coins": { "type": "number" },
+        "unlockedDecorations": { "type": "array" },
+        "activeDecorations": { "type": "object" },
+        "worldLayouts": { "type": "object" },
+        "ecosystem": { "type": "object" },
+        "surveyResults": { "type": "object" },
+        "initialSurvey": { "type": "object" },
+        "finalSurvey": { "type": "object" },
+        "surveyRewardGranted": { "type": "boolean" },
+        "initialSurveyCompleted": { "type": "boolean" },
+        "finalSurveyCompleted": { "type": "boolean" },
+        "completedActivities": { "type": "object" },
+        "activeMissions": { "type": "array" },
+        "activeMission": { "type": "object" },
+        "createdAt": { "type": "number" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["uid", "role", "createdAt"]
+    },
+    "School": {
+      "title": "School",
+      "description": "Official participating institutions and schools catalog",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 256 },
+        "normalizedName": { "type": "string", "maxLength": 256 },
+        "educationLevel": { "type": "string", "enum": ["Secundaria", "Bachillerato", "Universidad", "Otro"] },
+        "city": { "type": "string", "maxLength": 128 },
+        "state": { "type": "string", "maxLength": 128 },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "number" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["name", "normalizedName", "educationLevel", "active"]
+    },
+    "Question": {
+      "title": "Question",
+      "description": "Evaluation questions",
+      "type": "object",
+      "properties": {
+        "text": { "type": "string", "maxLength": 512 },
+        "category": { "type": "string", "maxLength": 64 },
+        "options": { "type": "array" }
+      }
+    },
+    "Activity": {
+      "title": "Activity",
+      "description": "Activity templates",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 128 },
+        "description": { "type": "string", "maxLength": 1024 },
+        "category": { "type": "string", "maxLength": 64 },
+        "durationDays": { "type": "number" }
+      }
+    },
+    "Mission": {
+      "title": "Mission",
+      "description": "Assigned mission for a student",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string", "maxLength": 128 },
+        "teacherId": { "type": "string", "maxLength": 128 },
+        "activityId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 128 },
+        "status": { "type": "string", "enum": ["active", "completed", "expired"] },
+        "progress": { "type": "number" },
+        "target": { "type": "number" },
+        "createdAt": { "type": "number" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["studentId", "teacherId", "activityId", "status", "createdAt"]
+    },
+    "Evidence": {
+      "title": "Evidence",
+      "description": "Submitted evidence for a mission",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string", "maxLength": 128 },
+        "missionId": { "type": "string", "maxLength": 128 },
+        "type": { "type": "string", "enum": ["photo", "video", "audio", "text"] },
+        "url": { "type": "string", "maxLength": 1024 },
+        "text": { "type": "string", "maxLength": 2048 },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["studentId", "missionId", "type", "status", "createdAt"]
+    },
+    "AccountDeletionRequest": {
+      "title": "Account Deletion Request",
+      "description": "Formal student account deletion requests supervised by teacher and admin",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "userName": { "type": "string", "maxLength": 128 },
+        "userEmail": { "type": "string", "maxLength": 256 },
+        "teacherId": { "type": "string", "maxLength": 128 },
+        "schoolId": { "type": "string", "maxLength": 128 },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected", "processing", "completed", "cancelled", "failed"] },
+        "reason": { "type": "string", "maxLength": 512 },
+        "createdAt": { "type": "number" },
+        "reviewedAt": { "type": "number" },
+        "reviewedBy": { "type": "string", "maxLength": 128 },
+        "completedAt": { "type": "number" }
+      },
+      "required": ["userId", "status", "createdAt"]
+    },
+    "PublicDeletionToken": {
+      "title": "Public Deletion Token",
+      "description": "Cryptographic short-lived verification tokens for unauthenticated public deletion requests",
+      "type": "object",
+      "properties": {
+        "tokenHash": { "type": "string", "maxLength": 128 },
+        "trackingId": { "type": "string", "maxLength": 32 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "userEmail": { "type": "string", "maxLength": 256 },
+        "status": { "type": "string", "enum": ["pending_verification", "used", "expired"] },
+        "createdAt": { "type": "number" },
+        "expiresAt": { "type": "number" }
+      },
+      "required": ["tokenHash", "userId", "status", "createdAt", "expiresAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profiles"
+    },
+    "accountDeletionRequests/{requestId}": {
+      "schema": { "$ref": "#/entities/AccountDeletionRequest" },
+      "description": "Supervised account deletion requests"
+    },
+    "publicDeletionTokens/{tokenId}": {
+      "schema": { "$ref": "#/entities/PublicDeletionToken" },
+      "description": "Server-side public deletion tokens"
+    },
+    "schools/{schoolId}": {
+      "schema": { "$ref": "#/entities/School" },
+      "description": "Schools directory"
+    },
+    "questions/{questionId}": {
+      "schema": { "$ref": "#/entities/Question" },
+      "description": "Evaluation questions"
+    },
+    "activities/{activityId}": {
+      "schema": { "$ref": "#/entities/Activity" },
+      "description": "Activity templates"
+    },
+    "missions/{missionId}": {
+      "schema": { "$ref": "#/entities/Mission" },
+      "description": "Missions assigned to students"
+    },
+    "evidences/{evidenceId}": {
+      "schema": { "$ref": "#/entities/Evidence" },
+      "description": "Evidences submitted"
+    }
+  }
+}

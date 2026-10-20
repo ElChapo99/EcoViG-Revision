@@ -1,0 +1,139 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function existing() {
+      return resource.data;
+    }
+    
+    function incoming() {
+      return request.resource.data;
+    }
+    
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    function getUserRole() {
+      return exists(/databases/$(database)/documents/users/$(request.auth.uid)) ? get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role : null;
+    }
+    
+    function isAdmin() {
+      return isSignedIn() && (
+        getUserRole() == 'admin' ||
+        getUserRole() == 'creator'
+      );
+    }
+
+    function isTeacher() {
+      return isSignedIn() && getUserRole() == 'teacher';
+    }
+
+    function isEvaluator() {
+      return isSignedIn() && getUserRole() == 'evaluator';
+    }
+    
+    function isStudent() {
+      return isSignedIn() && getUserRole() == 'student';
+    }
+
+    function isOwnerUpdatingAllowedFields(userId) {
+      return isOwner(userId) && 
+        incoming().uid == existing().uid && 
+        incoming().role == existing().role &&
+        !incoming().diff(existing()).affectedKeys().hasAny([
+          'coins', 'xp', 'level', 'role',
+          'teacherId', 'schoolId', 'schoolName',
+          'surveyRewardGranted', 'initialSurveyCompleted', 'finalSurveyCompleted',
+          'initialSurvey', 'finalSurvey', 'surveyResults',
+          'surveyPoints', 'mainMissionPoints', 'complementaryPoints',
+          'activitySurveys', 'completedActivities'
+        ]);
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    match /users/{userId} {
+      allow read: if isSignedIn();
+      allow create: if isOwner(userId) && incoming().uid == request.auth.uid;
+      allow update: if isOwnerUpdatingAllowedFields(userId) || isAdmin();
+      allow delete: if isAdmin();
+
+      // Subcollection for immutable reward transaction ledgers
+      match /rewardTransactions/{txId} {
+        allow read: if isSignedIn() && (isOwner(userId) || isAdmin());
+        allow write: if isAdmin();
+      }
+    }
+    match /roleRequests/{requestId} {
+      allow read: if isAdmin() || (isSignedIn() && existing().userId == request.auth.uid);
+      allow create: if isSignedIn() && incoming().userId == request.auth.uid;
+      allow update: if isAdmin();
+    }
+
+    match /accountDeletionRequests/{requestId} {
+      allow read: if isAdmin() || (isSignedIn() && (resource.data.userId == request.auth.uid || (isTeacher() && resource.data.teacherId == request.auth.uid)));
+      allow write: if false; // Deny all direct client writes; mutations are strictly authorized via authenticated backend Admin SDK endpoints
+    }
+
+    match /publicDeletionTokens/{tokenId} {
+      allow read, write: if false; // Server Admin SDK only (cryptographic public deletion tokens)
+    }
+
+    match /passwordResetCodes/{codeId} {
+      allow read, write: if false; // Server Admin SDK only
+    }
+
+    match /passwordResetSessions/{sessionId} {
+      allow read, write: if false; // Server Admin SDK only (state machine & token verification)
+    }
+
+    match /teacherLinkCodes/{codeId} {
+      allow read, write: if false; // Server Admin SDK atomic reservation index only
+    }
+
+    match /rateLimits/{limitId} {
+      allow read, write: if false; // Server Admin SDK only (distributed persistent rate limiting)
+    }
+
+    match /schools/{schoolId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /questions/{questionId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /surveyVersions/{versionId} {
+      allow read, write: if false; // Strict Backend Admin SDK authority only (prevents exposing drafts or bypassing transactional validation)
+    }
+
+    match /surveySystem/{docId} {
+      allow read, write: if false; // Strict Backend Admin SDK authority only
+    }
+
+    match /activities/{activityId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /missions/{missionId} {
+      allow read: if isSignedIn() && (existing().studentId == request.auth.uid || existing().teacherId == request.auth.uid || isAdmin() || isEvaluator());
+      allow create: if isOwner(incoming().studentId) || isTeacher() || isAdmin();
+      allow update: if (isOwner(existing().studentId) && incoming().studentId == existing().studentId) || isAdmin();
+    }
+
+    match /evidences/{evidenceId} {
+      allow read: if isSignedIn() && (existing().studentId == request.auth.uid || isAdmin() || isEvaluator() || (isTeacher() && get(/databases/$(database)/documents/users/$(existing().studentId)).data.teacherId == request.auth.uid));
+      allow create: if isOwner(incoming().studentId);
+      allow update: if isOwner(existing().studentId) && incoming().studentId == existing().studentId || isAdmin();
+    }
+  }
+}

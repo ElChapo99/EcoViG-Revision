@@ -1,0 +1,6 @@
+{
+  "name": "EcoViG",
+  "description": "EcoViG — Plataforma de vigilancia, monitoreo y gestión ecológica.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
