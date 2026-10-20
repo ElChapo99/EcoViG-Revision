@@ -1,0 +1,915 @@
+@import "tailwindcss";
+
+body {
+  @apply bg-[#05070a] text-white overflow-x-hidden;
+}
+
+@layer utilities {
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Organic Wildlife & Nature Animation Keyframes */
+@keyframes animalBreathe {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.02, 0.985) translateY(-1px);
+  }
+}
+
+@keyframes tailWag {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(8deg);
+  }
+  75% {
+    transform: rotate(-6deg);
+  }
+}
+
+@keyframes foxTailSway {
+  0%, 100% {
+    transform: rotate(-8deg) translateY(0);
+  }
+  50% {
+    transform: rotate(6deg) translateY(-2px);
+  }
+}
+
+@keyframes earTwitchLeft {
+  0%, 85%, 100% {
+    transform: rotate(0deg);
+  }
+  90% {
+    transform: rotate(-7deg);
+  }
+  95% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes earTwitchRight {
+  0%, 80%, 100% {
+    transform: rotate(0deg);
+  }
+  85% {
+    transform: rotate(8deg);
+  }
+  92% {
+    transform: rotate(-4deg);
+  }
+}
+
+@keyframes eyeBlink {
+  0%, 94%, 98%, 100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.1);
+  }
+}
+
+@keyframes owlBlink {
+  0%, 90%, 94%, 100% {
+    transform: scaleY(1);
+  }
+  92% {
+    transform: scaleY(0.08);
+  }
+}
+
+@keyframes flameDance1 {
+  0%, 100% {
+    transform: scale(1) skewX(0deg);
+    opacity: 0.95;
+  }
+  33% {
+    transform: scale(1.06, 0.95) skewX(-3deg);
+    opacity: 1;
+  }
+  66% {
+    transform: scale(0.96, 1.05) skewX(3deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes flameDance2 {
+  0%, 100% {
+    transform: scale(1) skewX(0deg);
+  }
+  50% {
+    transform: scale(1.1, 0.92) skewX(4deg);
+  }
+}
+
+@keyframes smokePuff {
+  0% {
+    transform: translateY(0) scale(0.7);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-8px) scale(1.1);
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateY(-16px) scale(1.4);
+    opacity: 0;
+  }
+}
+
+@keyframes sporeFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-5px) translateX(3px);
+    opacity: 1;
+  }
+}
+
+@keyframes canopySway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(1.2deg) scale(1.01);
+  }
+}
+
+.anim-breathe {
+  animation: animalBreathe 3.6s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.anim-tail {
+  animation: tailWag 3s ease-in-out infinite;
+  transform-origin: 65px 70px;
+}
+
+.anim-fox-tail {
+  animation: foxTailSway 4s ease-in-out infinite;
+  transform-origin: 64px 68px;
+}
+
+.anim-ear-l {
+  animation: earTwitchLeft 5s ease-in-out infinite;
+  transform-origin: 32px 30px;
+}
+
+.anim-ear-r {
+  animation: earTwitchRight 6s ease-in-out infinite;
+  transform-origin: 68px 30px;
+}
+
+.anim-blink {
+  animation: eyeBlink 4.5s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.anim-owl-blink {
+  animation: owlBlink 6s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.anim-flame-1 {
+  animation: flameDance1 1.6s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.anim-flame-2 {
+  animation: flameDance2 1.2s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.anim-smoke {
+  animation: smokePuff 2.8s ease-out infinite;
+  transform-origin: center center;
+}
+
+.anim-spore {
+  animation: sporeFloat 3s ease-in-out infinite;
+}
+
+.anim-canopy {
+  animation: canopySway 6s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes scorpionTailSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-6deg) translateY(-1px);
+  }
+}
+
+@keyframes tongueFlick {
+  0%, 88%, 100% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  90%, 94% {
+    transform: scaleX(1.1);
+    opacity: 1;
+  }
+  92% {
+    transform: scaleX(1.3) translateY(-1px);
+    opacity: 1;
+  }
+}
+
+@keyframes turbineSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes solarRays {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes waterRipple {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.04, 0.98);
+    opacity: 1;
+  }
+}
+
+.anim-scorpion-tail {
+  animation: scorpionTailSway 3.2s ease-in-out infinite;
+  transform-origin: 75px 65px;
+}
+
+.anim-tongue {
+  animation: tongueFlick 3.5s ease-in-out infinite;
+  transform-origin: left center;
+}
+
+.anim-turbine {
+  animation: turbineSpin 4s linear infinite;
+  transform-origin: 50px 25px;
+}
+
+.anim-sun-rays {
+  animation: solarRays 20s linear infinite;
+  transform-origin: center center;
+}
+
+.anim-ripple {
+  animation: waterRipple 4s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+@keyframes wingSoar {
+  0%, 100% {
+    transform: rotate(0deg) scaleY(1);
+  }
+  50% {
+    transform: rotate(3deg) scaleY(0.92);
+  }
+}
+
+@keyframes wingFlapLeft {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-8deg);
+  }
+}
+
+@keyframes wingFlapRight {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes floatLevitate {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes crystalGlint {
+  0%, 100% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.4));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.8));
+  }
+}
+
+.anim-wing-soar {
+  animation: wingSoar 4s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.anim-wing-l {
+  animation: wingFlapLeft 3.5s ease-in-out infinite;
+  transform-origin: 50px 45px;
+}
+
+.anim-wing-r {
+  animation: wingFlapRight 3.5s ease-in-out infinite;
+  transform-origin: 50px 45px;
+}
+
+.anim-float {
+  animation: floatLevitate 3.5s ease-in-out infinite;
+}
+
+.anim-glint {
+  animation: crystalGlint 2.8s ease-in-out infinite;
+}
+
+@keyframes beeBuzz {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  25% {
+    transform: translate(2px, -3px) rotate(4deg);
+  }
+  50% {
+    transform: translate(-1px, -5px) rotate(-3deg);
+  }
+  75% {
+    transform: translate(-3px, -2px) rotate(2deg);
+  }
+}
+
+@keyframes butterflyFlap {
+  0%, 100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.25);
+  }
+}
+
+@keyframes tramGlint {
+  0%, 90%, 100% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 2px rgba(254, 240, 138, 0.4));
+  }
+  95% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.9));
+  }
+}
+
+.anim-bee {
+  animation: beeBuzz 2.5s ease-in-out infinite;
+}
+
+.anim-butterfly {
+  animation: butterflyFlap 0.7s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.anim-tram-spark {
+  animation: tramGlint 3s ease-in-out infinite;
+}
+
+/* =========================================================
+   🌲 REALISTIC SCENERY & BIOME ATMOSPHERE KEYFRAMES
+   ========================================================= */
+
+@keyframes godRayPulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scaleY(1) rotate(-18deg);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scaleY(1.08) rotate(-16deg);
+  }
+}
+
+@keyframes mistDriftLeft {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(-40px) translateY(-4px);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+    opacity: 0.3;
+  }
+}
+
+@keyframes mistDriftRight {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateX(45px) translateY(3px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+    opacity: 0.25;
+  }
+}
+
+@keyframes deepTreeSway1 {
+  0%, 100% {
+    transform: rotate(0deg) skewX(0deg);
+  }
+  50% {
+    transform: rotate(1.2deg) skewX(0.8deg);
+  }
+}
+
+@keyframes deepTreeSway2 {
+  0%, 100% {
+    transform: rotate(0deg) skewX(0deg);
+  }
+  50% {
+    transform: rotate(-1.5deg) skewX(-1deg);
+  }
+}
+
+@keyframes riverWaveShimmer {
+  0%, 100% {
+    transform: scaleX(1) translateX(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scaleX(1.08) translateX(6px);
+    opacity: 0.95;
+  }
+}
+
+@keyframes leafDrift1 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.85;
+  }
+  90% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate(160px, 120px) rotate(320deg);
+    opacity: 0;
+  }
+}
+
+@keyframes leafDrift2 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-140px, 110px) rotate(-280deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fireflyGlowFloat1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(0.9);
+    opacity: 0.3;
+    filter: drop-shadow(0 0 3px rgba(167, 243, 208, 0.4));
+  }
+  30% {
+    transform: translate(12px, -15px) scale(1.15);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.9));
+  }
+  70% {
+    transform: translate(-8px, -24px) scale(0.85);
+    opacity: 0.5;
+    filter: drop-shadow(0 0 4px rgba(167, 243, 208, 0.5));
+  }
+}
+
+@keyframes fireflyGlowFloat2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(0.85);
+    opacity: 0.4;
+    filter: drop-shadow(0 0 4px rgba(253, 224, 71, 0.5));
+  }
+  40% {
+    transform: translate(-14px, -18px) scale(1.2);
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(250, 204, 21, 0.95));
+  }
+  80% {
+    transform: translate(10px, -28px) scale(0.9);
+    opacity: 0.35;
+    filter: drop-shadow(0 0 3px rgba(253, 224, 71, 0.4));
+  }
+}
+
+@keyframes birdCircle {
+  0% {
+    transform: translate(0, 0) scale(0.8) scaleX(1);
+  }
+  25% {
+    transform: translate(35px, -10px) scale(0.85) scaleX(1);
+  }
+  50% {
+    transform: translate(65px, 0px) scale(0.9) scaleX(-1);
+  }
+  75% {
+    transform: translate(30px, 8px) scale(0.85) scaleX(-1);
+  }
+  100% {
+    transform: translate(0, 0) scale(0.8) scaleX(1);
+  }
+}
+
+@keyframes waterRippleCircle {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.anim-god-ray {
+  animation: godRayPulse 6s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.anim-mist-1 {
+  animation: mistDriftLeft 14s ease-in-out infinite;
+}
+
+.anim-mist-2 {
+  animation: mistDriftRight 18s ease-in-out infinite;
+}
+
+.anim-tree-sway-1 {
+  animation: deepTreeSway1 7s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.anim-tree-sway-2 {
+  animation: deepTreeSway2 9s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.anim-river-shimmer {
+  animation: riverWaveShimmer 4s ease-in-out infinite;
+}
+
+.anim-leaf-1 {
+  animation: leafDrift1 10s linear infinite;
+}
+
+.anim-leaf-2 {
+  animation: leafDrift2 12s linear infinite 4s;
+}
+
+.anim-firefly-1 {
+  animation: fireflyGlowFloat1 5.5s ease-in-out infinite;
+}
+
+.anim-firefly-2 {
+  animation: fireflyGlowFloat2 6.5s ease-in-out infinite 1.5s;
+}
+
+.anim-bird-soar {
+  animation: birdCircle 16s ease-in-out infinite;
+}
+
+.anim-water-ripple {
+  animation: waterRippleCircle 3s ease-out infinite;
+}
+
+/* =========================================================
+   🌵 DESERT REALISTIC SCENERY KEYFRAMES
+   ========================================================= */
+
+@keyframes heatWaveDistort {
+  0%, 100% {
+    transform: translateY(0px) scaleY(1) skewX(0deg);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(-5px) scaleY(1.05) skewX(1.5deg);
+    opacity: 0.6;
+  }
+}
+
+@keyframes sandDustDrift1 {
+  0% {
+    transform: translate(-50px, 0) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(220px, -25px) scale(1.1);
+    opacity: 0;
+  }
+}
+
+@keyframes sandDustDrift2 {
+  0% {
+    transform: translate(-40px, 0) scale(0.7);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  75% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(260px, -40px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes tumbleweedRoll {
+  0% {
+    transform: translate(-60px, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.75;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(1100px, 15px) rotate(1440deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sunCoronaPulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.12) rotate(18deg);
+    opacity: 0.75;
+  }
+}
+
+@keyframes oasisRipple {
+  0%, 100% {
+    transform: scaleX(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scaleX(1.06) translateX(4px);
+    opacity: 0.95;
+  }
+}
+
+.anim-heat-shimmer {
+  animation: heatWaveDistort 4.5s ease-in-out infinite;
+}
+
+.anim-sand-dust-1 {
+  animation: sandDustDrift1 8s linear infinite;
+}
+
+.anim-sand-dust-2 {
+  animation: sandDustDrift2 10s linear infinite 3s;
+}
+
+.anim-tumbleweed {
+  animation: tumbleweedRoll 22s linear infinite;
+}
+
+.anim-sun-corona {
+  animation: sunCoronaPulse 8s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.anim-oasis-wave {
+  animation: oasisRipple 3.5s ease-in-out infinite;
+}
+
+/* =========================================================
+   ⛰️ MOUNTAIN REALISTIC SCENERY KEYFRAMES
+   ========================================================= */
+
+@keyframes auroraWave {
+  0%, 100% {
+    transform: scaleY(1) skewX(0deg);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scaleY(1.25) skewX(8deg);
+    opacity: 0.65;
+  }
+}
+
+@keyframes snowFlurry1 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(120px, 160px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes snowFlurry2 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate(-100px, 170px) rotate(-360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes snowPlumeDrift {
+  0%, 100% {
+    transform: translate(0, 0) scale(0.9);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translate(35px, -8px) scale(1.15);
+    opacity: 0.6;
+  }
+}
+
+@keyframes glacierMeltShimmer {
+  0%, 100% {
+    transform: scaleX(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scaleX(1.06) translateX(3px);
+    opacity: 1;
+  }
+}
+
+.anim-aurora {
+  animation: auroraWave 9s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.anim-snow-1 {
+  animation: snowFlurry1 9s linear infinite;
+}
+
+.anim-snow-2 {
+  animation: snowFlurry2 11s linear infinite 3.5s;
+}
+
+.anim-snow-plume {
+  animation: snowPlumeDrift 6s ease-in-out infinite;
+}
+
+.anim-glacier-wave {
+  animation: glacierMeltShimmer 3.5s ease-in-out infinite;
+}
+
+/* =========================================================
+   🏙️ GREEN CITY REALISTIC SCENERY KEYFRAMES
+   ========================================================= */
+
+@keyframes tramGlide {
+  0% {
+    transform: translateX(-120px);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(1150px);
+    opacity: 0;
+  }
+}
+
+@keyframes ecoGridPulse {
+  0%, 100% {
+    opacity: 0.35;
+    filter: drop-shadow(0 0 3px rgba(45, 212, 191, 0.4));
+  }
+  50% {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.85));
+  }
+}
+
+@keyframes turbineFastSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cleanAirBubble {
+  0% {
+    transform: translate(0, 0) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(40px, -80px) scale(1.15);
+    opacity: 0;
+  }
+}
+
+.anim-tram-glide {
+  animation: tramGlide 18s linear infinite;
+}
+
+.anim-eco-pulse {
+  animation: ecoGridPulse 4s ease-in-out infinite;
+}
+
+.anim-turbine-spin {
+  animation: turbineFastSpin 3.5s linear infinite;
+  transform-origin: center center;
+}
+
+.anim-clean-bubble-1 {
+  animation: cleanAirBubble 7s ease-out infinite;
+}
+
+.anim-clean-bubble-2 {
+  animation: cleanAirBubble 9s ease-out infinite 3s;
+}
+
+
+
